@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const App = props => {
   const [state, setState] = useState(props);
   const { name, price } = state;
 
+  useEffect(() => {
+    console.log("useEffect is invoked.");
+  });
+
+  useEffect(() => {
+    console.log("useEffect is like componentDidMount.");
+  }, []);
+
+  useEffect(() => {
+    console.log("This callback is for name only");
+  }, [name]);
+
+  const renderPeriod = () => {
+    return "。";
+  };
+
   return (
     <>
       <p>
-        現在の{name}は、{price}円です。
+        現在の{name}は、{price}円です{renderPeriod()}
       </p>
       <div>
         <button onClick={() => setState({ ...state, price: price + 1 })}>
