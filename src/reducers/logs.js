@@ -9,7 +9,7 @@ const operationLogs = (state = [], action) => {
       };
       return [log, ...state];
     case DELETE_ALL_LOGS:
-      return state;
+      return [];
     default:
       return state;
   }
